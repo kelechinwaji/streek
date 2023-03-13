@@ -18,8 +18,15 @@
             <option value="PATCH">PATCH</option>
             <option value="DELETE">DELETE</option>
         </select>
-        <input required class="form-control"/>
-      </div>  
+        <input required class="form-control" type="url" placeholder="https://example.com"/>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div> 
+      
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="query-params-tab" data-bs-toggle="tab" data-bs-target="#Query-params" type="button" role="tab" aria-controls="#Query-params" aria-selected="true">Query Params</button>
+        </li>
+      </ul>
     </form>
     </div>
 </body>
