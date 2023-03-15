@@ -48,13 +48,3 @@ function keyValuePairsToObjects(container){
     }, {})
 }
 
-function updateEndTime(response) {
-    response.customData = response.customData || {}
-    response.customData.time =
-      new Date().getTime() - response.config.customData.startTime
-    return response
-  }
-
-  axios.interceptors.response.use(updateEndTime, e => {
-    return Promise.reject(updateEndTime(e.response))
-  })
