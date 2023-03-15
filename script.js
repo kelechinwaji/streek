@@ -54,3 +54,7 @@ function updateEndTime(response) {
       new Date().getTime() - response.config.customData.startTime
     return response
   }
+
+  axios.interceptors.response.use(updateEndTime, e => {
+    return Promise.reject(updateEndTime(e.response))
+  })
