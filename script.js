@@ -47,3 +47,10 @@ function keyValuePairsToObjects(container){
        return {...data, [key]: value}
     }, {})
 }
+
+function updateEndTime(response) {
+    response.customData = response.customData || {}
+    response.customData.time =
+      new Date().getTime() - response.config.customData.startTime
+    return response
+  }
