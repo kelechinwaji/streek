@@ -76,3 +76,15 @@ function updateResponseDetails(response) {
         JSON.stringify(response.headers).length
     )
   }
+
+  function updateResponseHeaders(headers) {
+    responseHeadersContainer.innerHTML = ""
+    Object.entries(headers).forEach(([key, value]) => {
+      const keyElement = document.createElement("div")
+      keyElement.textContent = key
+      responseHeadersContainer.append(keyElement)
+      const valueElement = document.createElement("div")
+      valueElement.textContent = value
+      responseHeadersContainer.append(valueElement)
+    })
+  }
