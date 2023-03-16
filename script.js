@@ -48,3 +48,11 @@ function keyValuePairsToObjects(container){
     }, {})
 }
 
+
+axios({
+    url: document.querySelector("[data-url]").value,
+    method: document.querySelector("[data-method]").value,
+    params: keyValuePairsToObjects(queryParamsContainer),
+    headers: keyValuePairsToObjects(requestHeadersContainer),
+    data,
+  })
