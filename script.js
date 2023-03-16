@@ -48,33 +48,3 @@ function keyValuePairsToObjects(container){
     }, {})
 }
 
-//
-axios({
-    url: document.querySelector("[data-url]").value,
-    method: document.querySelector("[data-method]").value,
-    params: keyValuePairsToObjects(queryParamsContainer),
-    headers: keyValuePairsToObjects(requestHeadersContainer),
-    data,
-  })
-
-
-function updateResponseDetails(response) {
-    document.querySelector("[data-status]").textContent = response.status
-    document.querySelector("[data-time]").textContent = response.customData.time
-    document.querySelector("[data-size]").textContent = prettyBytes(
-      JSON.stringify(response.data).length +
-        JSON.stringify(response.headers).length
-    )
-  }
-
-  function updateResponseHeaders(headers) {
-    responseHeadersContainer.innerHTML = ""
-    Object.entries(headers).forEach(([key, value]) => {
-      const keyElement = document.createElement("div")
-      keyElement.textContent = key
-      responseHeadersContainer.append(keyElement)
-      const valueElement = document.createElement("div")
-      valueElement.textContent = value
-      responseHeadersContainer.append(valueElement)
-    })
-  }
