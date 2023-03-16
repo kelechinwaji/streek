@@ -48,7 +48,7 @@ function keyValuePairsToObjects(container){
     }, {})
 }
 
-
+//
 axios({
     url: document.querySelector("[data-url]").value,
     method: document.querySelector("[data-method]").value,
@@ -67,3 +67,12 @@ axios({
     console.log(response)
   })
 })
+
+function updateResponseDetails(response) {
+    document.querySelector("[data-status]").textContent = response.status
+    document.querySelector("[data-time]").textContent = response.customData.time
+    document.querySelector("[data-size]").textContent = prettyBytes(
+      JSON.stringify(response.data).length +
+        JSON.stringify(response.headers).length
+    )
+  }
