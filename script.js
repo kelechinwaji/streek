@@ -56,3 +56,14 @@ axios({
     headers: keyValuePairsToObjects(requestHeadersContainer),
     data,
   })
+  .catch(e => e)
+  .then(response => {
+    document
+      .querySelector("[data-response-section]")
+      .classList.remove("d-none")
+    updateResponseDetails(response)
+    updateResponseEditor(response.data)
+    updateResponseHeaders(response.headers)
+    console.log(response)
+  })
+})
