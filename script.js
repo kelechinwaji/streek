@@ -48,6 +48,7 @@ function keyValuePairsToObjects(container){
     }, {})
 }
 
+//
 function keyValuePairsToObjects(container) {
     const pairs = container.querySelectorAll("[data-key-value-pair]")
     return [...pairs].reduce((data, pair) => {
@@ -57,3 +58,11 @@ function keyValuePairsToObjects(container) {
       if (key === "") return data
       return { ...data, [key]: value }
     }, {})
+
+    function createKeyValuePair() {
+        const element = keyValueTemplate.content.cloneNode(true)
+        element.querySelector("[data-remove-btn]").addEventListener("click", e => {
+          e.target.closest("[data-key-value-pair]").remove()
+        })
+        return element
+      }
