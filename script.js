@@ -87,3 +87,22 @@ function keyValuePairsToObjects(container) {
             JSON.stringify(response.headers).length
         )
       }
+
+      axios({
+        url: document.querySelector("[data-url]").value,
+        method: document.querySelector("[data-method]").value,
+        params: keyValuePairsToObjects(queryParamsContainer),
+        headers: keyValuePairsToObjects(requestHeadersContainer),
+        data,
+      })
+        .catch(e => e)
+        .then(response => {
+          document
+            .querySelector("[data-response-section]")
+            .classList.remove("d-none")
+          updateResponseDetails(response)
+          updateResponseEditor(response.data)
+          updateResponseHeaders(response.headers)
+          console.log(response)
+        })
+    })
