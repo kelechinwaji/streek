@@ -57,7 +57,7 @@ function keyValuePairsToObjects(container) {
   
       if (key === "") return data
       return { ...data, [key]: value }
-    }, {})
+    }, {})}
 
     function createKeyValuePair() {
         const element = keyValueTemplate.content.cloneNode(true)
@@ -77,4 +77,13 @@ function keyValuePairsToObjects(container) {
           valueElement.textContent = value
           responseHeadersContainer.append(valueElement)
         })
+      }
+
+      function updateResponseDetails(response) {
+        document.querySelector("[data-status]").textContent = response.status
+        document.querySelector("[data-time]").textContent = response.customData.time
+        document.querySelector("[data-size]").textContent = prettyBytes(
+          JSON.stringify(response.data).length +
+            JSON.stringify(response.headers).length
+        )
       }
