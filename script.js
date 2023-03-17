@@ -48,3 +48,12 @@ function keyValuePairsToObjects(container){
     }, {})
 }
 
+function keyValuePairsToObjects(container) {
+    const pairs = container.querySelectorAll("[data-key-value-pair]")
+    return [...pairs].reduce((data, pair) => {
+      const key = pair.querySelector("[data-key]").value
+      const value = pair.querySelector("[data-value]").value
+  
+      if (key === "") return data
+      return { ...data, [key]: value }
+    }, {})
